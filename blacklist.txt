@@ -1,0 +1,11 @@
+password
+qwerty
+parol
+mypassword
+admin
+adminadmin
+superuser
+user
+work
+job
+secret
