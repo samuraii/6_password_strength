@@ -2,6 +2,7 @@ password
 qwerty
 parol
 mypassword
+mypass
 admin
 adminadmin
 superuser
@@ -9,3 +10,5 @@ user
 work
 job
 secret
+company
+test

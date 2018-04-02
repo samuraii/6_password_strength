@@ -27,32 +27,46 @@ def check_case_sensitivity(password):
 
 
 def check_special_characters(password):
-    return 0
+    special_chars = re.findall(r'[^\w\s]', password)
+    return len(special_chars) if len(special_chars) < 2 else 2
 
 
-def check_blacklist(password):
+def get_unique_word_patterns(password):
+    return set(re.findall(r'[a-zA-Z]+', password))
+
+
+def get_all_blacklist_words():
     with open('blacklist.txt') as file_content:
-        black_list = file_content.read().split()
-    return 0
+        return file_content.read().split()
 
 
-def check_for_common_templates(password):
-    return 0
+def list_items_to_lower_case(list):
+    resulting_list = []
+    for word in list:
+        resulting_list.append(word.lower())
+    return resulting_list
+
+
+def check_blacklist_words(password):
+    word_patterns = get_unique_word_patterns(password)
+    word_patterns_lowered = list_items_to_lower_case(word_patterns)
+    blacklist = get_all_blacklist_words()
+    not_in_blacklist_words = set(word_patterns_lowered) - set(blacklist)
+    unique_words_count = len(not_in_blacklist_words)
+    return unique_words_count if unique_words_count < 3 else 4
 
 
 def get_password_strength(password):
     password_checklist = [
         check_special_characters,
         check_case_sensitivity,
-        check_blacklist,
-        check_letters_and_digits,
-        check_for_common_templates
+        check_blacklist_words,
+        check_letters_and_digits
     ]
     score = 0
     for score_function in password_checklist:
         score += score_function(password)
-
-    return score
+    return 'Your password score is {}'.format(score)
 
 
 if __name__ == '__main__':
