@@ -1,6 +1,6 @@
 # Password Strength Calculator
 
-The scrip allows you to evaluate the strength of your password. Strong password is required to keep you personal information safe, at least from bruteforce attacks.
+The script allows you to evaluate the strength of your password. Strong password is required to keep you personal information safe, at least from bruteforce attacks.
 
 Your password is scored from 0 to 10. In order to get maximum score your password should meet following requirements.
 
@@ -13,20 +13,15 @@ Your password is scored from 0 to 10. In order to get maximum score your passwor
 * blacklist file can be extend with words of your choice
 
 Password scores examples:
-
+```
 "password" -> 0
-
 "12345678" -> 1
-
 "Password" -> 2
-
 "Password1" -> 3
-
 "1Password1" -> 4
-
 "1Password1\*&" -> 6
-
 "Pa3wo\*rd8ds\*nms" -> 10
+```
 
 # How to use script
 
