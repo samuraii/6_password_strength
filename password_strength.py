@@ -35,9 +35,9 @@ def get_list_of_blacklist_words():
         return file_content.read().split()
 
 
-def list_items_to_lower_case(list):
+def list_items_to_lower_case(list_of_words):
     resulting_list = []
-    for word_in_list in list:
+    for word_in_list in list_of_words:
         resulting_list.append(word_in_list.lower())
     return resulting_list
 
