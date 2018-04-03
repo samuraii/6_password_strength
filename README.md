@@ -26,7 +26,7 @@ Your password is scored from 0 to 10. In order to get maximum score your passwor
 
 ## How to use script
 
-Run script and pass it path to **blacklist.txt** as optional parametr:
+Run script and pass it path to **blacklist.txt** as parametr:
 
 ```bash
 python password_strength.py <path_to_blacklist>
