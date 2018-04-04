@@ -36,7 +36,7 @@ def get_unique_word_patterns(user_password):
 
 def get_list_of_blacklist_words(path_to_blacklist):
     with open(path_to_blacklist) as file_object:
-        return file_object.read().split("\n")
+        return file_object.read().split('\n')
 
 
 def transform_words_to_lower(list_of_words):
