@@ -10,31 +10,28 @@ def get_password_from_user():
 def get_digits_score(user_password):
     max_score = 2
     numbers_in_password = re.findall(r'[0-9]+', user_password)
-    if len(numbers_in_password) < max_score:
-        return len(numbers_in_password)
-    else:
-        return len(numbers_in_password)
+    return min(len(numbers_in_password), max_score)
 
 
 def get_case_sensitivity_score(user_password):
     max_score = 2
     lower_pass = user_password.lower()
     upper_pass = user_password.upper()
-    sensetive = user_password != lower_pass and user_password != upper_pass
-    return sensetive * max_score
+    sensitive = user_password != lower_pass and user_password != upper_pass
+    return sensitive * max_score
 
 
 def get_special_characters_score(user_password):
     max_score = 2
     special_chars = re.findall(r'[^\w\s]', user_password)
-    return len(special_chars) if len(special_chars) < 2 else max_score
+    return min(len(special_chars), max_score)
 
 
 def get_unique_word_patterns(user_password):
     return set(re.findall(r'[a-zA-Z]+', user_password))
 
 
-def get_list_of_blacklist_words(path_to_blacklist):
+def load_blacklist(path_to_blacklist):
     with open(path_to_blacklist) as file_object:
         return file_object.read().split('\n')
 
@@ -51,7 +48,7 @@ def get_unique_words_score(user_password, blacklist_words):
     word_patterns_lowered = transform_words_to_lower(word_patterns)
     unique_words = set(word_patterns_lowered) - set(blacklist_words)
     unique_words_count = len(unique_words)
-    return unique_words_count if unique_words_count < 3 else max_score
+    return min(len(unique_words_count), max_score)
 
 
 def get_password_strength(password, blacklist):
@@ -73,7 +70,7 @@ def get_password_strength(password, blacklist):
 if __name__ == '__main__':
     try:
         path_to_blacklist = sys.argv[1]
-        blacklist_words = get_list_of_blacklist_words(path_to_blacklist)
+        blacklist_words = load_blacklist(path_to_blacklist)
     except (IndexError, FileNotFoundError):
         print('Blacklist not passed or found, '
             'password won\'t be scored for unique words.')
