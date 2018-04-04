@@ -8,9 +8,10 @@ Your password is scored from 0 to 10. In order to get maximum score your passwor
 2) Use upper case and lower case letters
 3) Use numbers at least twice separated by letters or special characters
 4) Use special characters like **!@#$%^&\*())** at least twice
-5) Use unique character sequences at least 3 times (unique character sequences are those which not present in **bal**cklist.txt**)
+5) Use unique character sequences at least 3 times (unique character sequences are those which not present in **blacklist.txt**)
 
-**Note**: _You can pass your own **blacklist.txt** file as a parametr to script, otherwise the default will be used._
+**Note**: _You should pass your own **blacklist.txt** file as a parametr to script, otherwise the check will not be performed. You can obtain a blacklist from: https://github.com/danielmiessler/SecLists/tree/master/Passwords, it's regular updated. The more common words words you will use in your list, the more secure your password will be._
+
 
 ## Password scores examples:
 
